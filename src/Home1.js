@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-// import './CareerBoost.css'; // Create a CSS file for your styles and import it here
+import { Link, useNavigate } from 'react-router-dom'
 
-const CareerBoost = () => {
+const Home1 = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   const toggleMenu = () => {
@@ -31,11 +31,11 @@ const CareerBoost = () => {
   };
 
   listContainer.addEventListener("click", function (e){
-    if (e.target.tagName === 'LI') {
+    if (e.target.tagName === 'li') {
         e.target.classList.toggle("checked");
         saveData()
     }
-    else if (e.target.tagName === "SPAN") {
+    else if (e.target.tagName === "span") {
         e.target.parentElement.remove();
         saveData();
     }
@@ -54,20 +54,20 @@ showTask();
     <div>
       <header className="header">
         <nav>
-          <a href="index.html">
+          <Link to="">
             <img src="logo1.png" alt="CareerBoost Logo" />
-          </a>
+          </Link>
           <div className={`nav-links ${showMenu ? 'show' : ''}`}>
             <i className="fa fa-times" onClick={hideMenu}></i>
             <ul>
               <li>
-                <a href="">HOME</a>
+                <Link to="/">HOME</Link>
               </li>
               <li>
-                <a href="">ABOUT</a>
+                <Link to="/about">ABOUT</Link>
               </li>
               <li>
-                <a href="">CONTACT</a>
+                <Link to="/contact">CONTACT</Link>
               </li>
             </ul>
           </div>
@@ -82,9 +82,9 @@ showTask();
             community, ultimately empowering individuals in their pursuit of
             professional success.
           </p>
-          <a href="" className="hero-btn">
+          <Link to="/" className="hero-btn">
             Visit Us To Know More
-          </a>
+          </Link>
         </div>
       </header>
 
@@ -93,19 +93,19 @@ showTask();
       <section className="function">
         <div className="row">
           <div className="fun-col">
-            <a href="" className="notes">
+            <Link to="" className="notes">
               NOTES
-            </a>
+            </Link>
           </div>
           <div className="fun-col">
-            <a href="" className="Resume">
+            <Link to="" className="Resume">
               RESUME MAKER
-            </a>
+            </Link>
           </div>
           <div className="fun-col">
-            <a href="" className="ATS">
+            <Link to="" className="ATS">
               ATS CHECKER
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -126,4 +126,4 @@ showTask();
   );
 };
 
-export default CareerBoost;
+export default Home1;

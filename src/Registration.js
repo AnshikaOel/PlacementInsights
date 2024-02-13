@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 export default function Registration() {
     
+     
     const [fname,fnamechange]=useState("")
     const [lname,lnamechange]=useState("")
     const [id,idchange]=useState("")
@@ -62,11 +63,11 @@ export default function Registration() {
                 },
                 body:JSON.stringify(info),
             })
-
+ 
             console.log(response)
             if(response.ok){
                 console.log("Data saved successfully");
-                navigate('/Home')
+                navigate('/Home',{state:{id}})
             }else{
                 console.log("some error occuredknkn")
             }

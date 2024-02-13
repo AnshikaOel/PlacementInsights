@@ -13,7 +13,7 @@ export default function Login() {
   console.log("THis is login & apassword -- "+id+" & "+password)
   const ProceedLogin=async(e)=>{
     e.preventDefault()
-    if(validate())
+    if(validate()) 
     {
       console.log('procedd')
       try{
@@ -28,7 +28,7 @@ export default function Login() {
         if(resp.ok){
           if(a.success){
             console.log("yeahh...we did")
-            // navigate('/feed',{state:{id}})
+            navigate('/home1',{state:{id}})
           }else{
             navigate('/login')
             toast.error('Login Failed due to Wrong Login Cresdentials')
