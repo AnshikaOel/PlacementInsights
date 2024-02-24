@@ -1,4 +1,5 @@
 [
+<<<<<<< HEAD
   {
     "fname": "Anshika",
     "lname": "Gupta",
@@ -35,3 +36,7 @@
     "TodoList": []
   }
 ]
+=======
+  
+]
+>>>>>>> bd40585d62c5f19c08b1d793ffab22470d7afb7a
