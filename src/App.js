@@ -98,5 +98,4 @@ let initTodo;
     </div>
   );
 }
-
 export default App;
