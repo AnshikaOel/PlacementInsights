@@ -12,8 +12,9 @@ export default function Registration() {
     const [phone_no,setphone_no]=useState("")
     const [password,passwordchange]=useState("")
     const [confirm_password,setconfirm_password]=useState("")
+    const [TodoList,setTodoList]=useState([])
     const navigate=useNavigate();
-    let info = { id, fname, lname, password ,phone_no};
+    let info = { id, fname, lname, password ,phone_no,TodoList};
     
     // to check if the email is valid
     const validateEmail = (id) => {

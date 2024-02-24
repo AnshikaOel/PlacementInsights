@@ -252,7 +252,7 @@
     cursor: pointer;
     user-select: none;
     position: relative;
-  }
+  } 
   
   ul li::before{
     content: '';

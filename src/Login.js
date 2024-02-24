@@ -28,7 +28,7 @@ export default function Login() {
         if(resp.ok){
           if(a.success){
             console.log("yeahh...we did")
-            navigate('/home1',{state:{id}})
+            navigate('/Home',{state:{id}})
           }else{
             navigate('/login')
             toast.error('Login Failed due to Wrong Login Cresdentials')
@@ -42,7 +42,7 @@ export default function Login() {
       }
   }
 }
-  const validate=()=>{
+  const validate=()=>{ 
     let result=true;
     if(id==='' || id===null){
       result=false

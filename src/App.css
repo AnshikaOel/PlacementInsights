@@ -141,6 +141,7 @@ nav {
 
 nav img {
   width: 150px;
+  height: 100px;
 }
 
 .nav-links {
@@ -288,25 +289,6 @@ h1{
   margin-bottom: 5%;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .container{
   width: 100%;
   min-height: 100vh;
@@ -406,4 +388,23 @@ border-radius: 50%;
 }
 ul li span:hover{
   background: #edeef0;
+}
+
+#title{
+  color: rgb(241, 13, 13);
+  text-shadow:2px 2px 4px #000000;;
+}
+
+.navBar {
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #282c34; 
+  margin: 10%;
+  margin-left: 15%;
+  margin-right: 15%;
+  border-radius: 7px;
+  border-width: 5px;
+  border-color: rgb(119, 119, 235);
+  padding: 5%;
 }

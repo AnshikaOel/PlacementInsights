@@ -2,14 +2,73 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import React, { useState ,useEffect} from 'react';
 import Login from './Login'
 import Registration from './Registration'
 import Home from './Home'
 import Home1 from './Home1'
+import Jobs from './Jobs'
+import AddToDo from "./AddToDo" 
+import Todos from "./ToDos";
+import TodoItem from './ToDoItem';
+import ATS from './ATS'
+import About from './About'
+import Contact  from './Contact';
+import Notes from "./Notes";
+import Header from "./Header";
+import  Footer  from "./Footer";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 function App() {
+
+  
+let initTodo;
+  if(localStorage.getItem("todos")===null)
+  {
+    initTodo=[]
+  }else{
+    initTodo=JSON.parse(localStorage.getItem("todos"))
+  }
+
+  const onDelete=(todo)=>{
+    console.log("I am delete function",todo)
+    //  deleting this way will not work
+    // let index=todos.indexOf(todo)
+    // todos.splice(index,1)
+
+    setTodos(todos.filter((e)=>{
+      return e!== todo;})) 
+      console.log("deleted",todos)
+      localStorage.setItem("todos",JSON.stringify(todos))
+  }
+  
+
+  // this is basicly stiring data inconsole
+  const addTodo=(title,desc)=>{
+    console.log("This is add todo function ",title,desc)
+    let sno;
+    if(todos.length===0)
+    {
+        sno=1;
+    }
+    else{
+      sno=todos[todos.length-1].sno+1
+    } 
+    const myTodo={
+      sno:sno,
+      title : title ,
+      desc:desc
+    }
+    setTodos([...todos,myTodo])
+    console.log(myTodo)
+  }
+
+  const [todos,setTodos]=useState(initTodo)
+  // console.log("hahaha this is lenght",todos.length)
+
+  useEffect(()=>{
+    localStorage.setItem("todos",JSON.stringify(todos))
+  },[todos])
   return (
     <div className="App">
       <ToastContainer></ToastContainer>
@@ -18,7 +77,22 @@ function App() {
           <Route path='/' element={<Home/>}></Route>
           <Route path='/login' element={<Login/>}></Route>
           <Route path='/registration' element={<Registration/>}></Route>
-          <Route path='/home' element={<Home1/>}></Route>
+          <Route path='/home' element={<>
+                                       <Home1/>
+                                       <TodoItem/>
+                                       </>}>
+          </Route>
+          {/* <Route   path='/home' element={<>
+            <AddToDo addTodo={addTodo}/> 
+            <Todos todos={todos} onDelete={onDelete}/>
+            </>}/> */}
+          <Route path='jobs' element={<Jobs/>}></Route>
+          <Route path='/ats' element={<ATS/>}></Route>
+          <Route path='/about' element={<About/>}></Route>
+          <Route path='/contactUs' element={<Contact/>}></Route>
+          <Route path='' element={<Header/>}></Route>
+          <Route path='' element={<Footer/>}></Route>
+          <Route path='' element={<Notes/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

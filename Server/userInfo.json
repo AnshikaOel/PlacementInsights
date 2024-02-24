@@ -2,71 +2,36 @@
   {
     "fname": "Anshika",
     "lname": "Gupta",
-    "id": "anshika.oel@gmail.com",
+    "id": "22mca009@jssaten.ac.in",
     "phone_no": "9838083876",
-    "password": "25Srajan-03"
+    "password": "22AAaa-00",
+    "TodoList": [
+      {
+        "sno": 5,
+        "title": "ans",
+        "desc": "asxads"
+      },
+      {
+        "sno": 5,
+        "title": "ans",
+        "desc": "asxads"
+      }
+    ]
   },
   {
     "fname": "Anshika",
     "lname": "Gupta",
-    "id": "anshika.oel@gmail.com",
+    "id": "22mc@jssaten.ac.in",
     "phone_no": "9838083876",
-    "password": "25Anshika-03"
+    "password": "22AAaa-00",
+    "TodoList": []
   },
   {
     "fname": "Anshika",
     "lname": "Gupta",
-    "id": "anshika.oel@gmail.com",
+    "id": "anshika.1@gmail.com",
     "phone_no": "9838083876",
-    "password": "25Anshika-03"
-  },
-  {
-    "fname": "Anshika",
-    "lname": "Gupta",
-    "id": "anshika.oel@gmail.com",
-    "phone_no": "9838083876",
-    "password": "25Anshika-03"
-  },
-  {
-    "fname": "Anshika",
-    "lname": "Gupta",
-    "id": "anshika.oel@gmail.com",
-    "phone_no": "9838083876",
-    "password": "25Anshika-03"
-  },
-  {
-    "fname": "Anshika",
-    "lname": "Gupta",
-    "id": "anshika.oel@gmail.com",
-    "phone_no": "9838083876",
-    "password": "25Anshika-03"
-  },
-  {
-    "fname": "Anshika",
-    "lname": "Gupta",
-    "id": "anshika.oel@gmail.com",
-    "phone_no": "9838083876",
-    "password": "25Anshika-03"
-  },
-  {
-    "fname": "Anshika",
-    "lname": "Gupta",
-    "id": "anshika.oel@gmail.com",
-    "phone_no": "9838083876",
-    "password": "25Srajan-03"
-  },
-  {
-    "fname": "Anshika",
-    "lname": "Gupta",
-    "id": "anshika.oel@gmail.com",
-    "phone_no": "9838083876",
-    "password": "25AAaa-03"
-  },
-  {
-    "fname": "Anshika",
-    "lname": "Gupta",
-    "id": "anshika.oel@gmail.com",
-    "phone_no": "9838083876",
-    "password": "25AAbb-03"
+    "password": "22AAaa-00",
+    "TodoList": []
   }
 ]
