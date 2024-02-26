@@ -22,7 +22,7 @@ app.use(cors({
     optionsSuccessStatus: 204,
 })); 
 
-
+console.log("this is not fun")
 // saving data
 app.post('/userInfo',async(req,res)=>{
     const {fname,lname,id,password,phone_no,TodoList}=req.body;
@@ -122,7 +122,7 @@ app.post('/todoList',async(req,res)=>{
         console.error("error in adding file : ",error)
         res.status(500).json({error:'Internal Server Error'})
     }
-})
+}) 
 
 //giving data back of todo
 app.post('/get_todo',async(req,res)=>{
@@ -230,6 +230,14 @@ app.get('/internship/applied', (req,res) => {
     });
     res.json(appliedInternships);
 });
+
+// trying for pdf retrival
+app.get('/getting_pdf',(req,res)=>{
+    console.log('file path found successfully')
+    const pdfPath=path.join(__dirname,'../src/Notes/PDF/Coding','SDE.pdf')
+    console.log(pdfPath)
+    res.sendFile(pdfPath)
+})
 
 
 

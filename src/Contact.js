@@ -1,7 +1,23 @@
 import React,{useState} from 'react';
 import { Styles } from './css/Contact.css';
+import { Link ,useLocation, useNavigate} from 'react-router-dom'
+import logo from './logo1.png'
 
 const Contact = () =>{
+
+  const location =useLocation()
+  const {state:{id}}=location
+  console.log("this is id ahaha ",id)
+    // for client side effects
+    const [showMenu, setShowMenu] = useState(false);
+    const navigate=useNavigate()
+    const toggleMenu = () => {
+      setShowMenu(!showMenu);
+    };
+  
+    const hideMenu = () => {
+      setShowMenu(false);
+    };
 
     const GoogleSheetForm = () => {
         const scriptURL = 'https://script.google.com/macros/s/AKfycby0qF7s-b2KsyvtjRDPDwnnaFIJgezAnFe_VXwlw72rzCbxA42QZCsHajUgvELRiiU1sw/exec';
@@ -30,11 +46,92 @@ const Contact = () =>{
           }
         };
     }
+
+    const handleAbout=()=>{
+      navigate('/about',{state:{id}})
+    }
+    const handleContact=()=>{
+      navigate('/contactUs',{state:{id}})
+    }
+    const handleHome=()=>{
+      navigate('/Home',{state:{id}})
+    }
+    const handleLogOut=()=>{
+      navigate('/')
+      }
   return (
+    
+<div>
+<header>
+        <nav>
+          <a
+            href="index.html"
+            style={{
+              color: "blue",
+              textDecoration: "none",
+              paddingTop: "8px",
+              fontSize: "2em",
+            }}
+          >
+            CareerBoost
+          </a>
+          <div className="nav-links" id="navLinks">
+            <ul>
+              <li onClick={handleHome}>
+                <a
+                  href=""
+                  style={{
+                    color: "black",
+                    fontWeight: "1250",
+                    fontSize: "large",
+                  }}
+                >
+                  HOME
+                </a>
+              </li>
+              <li onClick={handleAbout}>
+                <a
+                  href=""
+                  style={{
+                    color: "black",
+                    fontWeight: "1250",
+                    fontSize: "large",
+                  }}
+                >
+                  ABOUT
+                </a>
+              </li>
+              <li onClick={handleContact}>
+                <a
+                  href=""
+                  style={{
+                    color: "black",
+                    fontWeight: "1250",
+                    fontSize: "large",
+                  }}
+                >
+                  CONTACT
+                </a>
+              </li>
+              <li onClick={handleLogOut}>
+                <a
+                  href=""
+                  style={{
+                    color: "black",
+                    fontWeight: "1250",
+                    fontSize: "large",
+                  }}
+                >
+                   LOG OUT
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
     <div className="ffbox">
       <div className="ffbox1">
-
-        {/* <h1 className="cb">CareerBoost</h1> */}
+        <h1 className="cb">CareerBoost</h1>
         <h2>Contact Us:</h2>
         <form name="submit-to-google-sheet" onSubmit={GoogleSheetForm}>
           <label htmlFor="fullName">
@@ -74,6 +171,7 @@ const Contact = () =>{
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
       </div>
+    </div>
     </div>
   );
 };

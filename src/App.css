@@ -408,3 +408,7 @@ ul li span:hover{
   border-color: rgb(119, 119, 235);
   padding: 5%;
 }
+
+#resume {
+  margin: 70px;
+}

@@ -22,7 +22,7 @@ export default function Login() {
         headers:{
           'Content-Type':'application/json',
         },
-        body:JSON.stringify({id,password})
+        body:JSON.stringify({id,password}) 
       })
       const a= await resp.json()
         if(resp.ok){

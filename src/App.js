@@ -9,14 +9,15 @@ import Home from './Home'
 import Home1 from './Home1'
 import Jobs from './Jobs'
 import AddToDo from "./AddToDo" 
-import Todos from "./ToDos";
+import Todos from "./ToDos"; 
 import TodoItem from './ToDoItem';
 import ATS from './ATS'
 import About from './About'
 import Contact  from './Contact';
-import Notes from "./Notes";
+import Notes from "./Notes/NotesHOme";
 import Header from "./Header";
 import  Footer  from "./Footer";
+import NotesOS from './Notes/Notes'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -86,13 +87,16 @@ let initTodo;
             <AddToDo addTodo={addTodo}/> 
             <Todos todos={todos} onDelete={onDelete}/>
             </>}/> */}
-          <Route path='jobs' element={<Jobs/>}></Route>
+          <Route path='/jobs' element={<Jobs/>}></Route>
           <Route path='/ats' element={<ATS/>}></Route>
           <Route path='/about' element={<About/>}></Route>
           <Route path='/contactUs' element={<Contact/>}></Route>
           <Route path='' element={<Header/>}></Route>
           <Route path='' element={<Footer/>}></Route>
-          <Route path='' element={<Notes/>}></Route>
+          <Route path='/notes' element={<Notes/>}></Route>
+          <Route path='/osnotes' element={<NotesOS/>}></Route>
+          
+          {/* <Route path='notes' element={</>}></Route> */}
         </Routes>
       </BrowserRouter>
     </div>

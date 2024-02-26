@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import image from "./shareThought.jpg"
 export default function Home() {
   return (
-    <div>
+    <div> 
       <img src={image} alt='background-image'/>
       <div id='d'>
         <div className='homediv' >
@@ -18,4 +18,4 @@ export default function Home() {
     </div> 
   ) 
 } 
-  
+    

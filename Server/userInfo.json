@@ -1,5 +1,4 @@
 [
-<<<<<<< HEAD
   {
     "fname": "Anshika",
     "lname": "Gupta",
@@ -22,10 +21,26 @@
   {
     "fname": "Anshika",
     "lname": "Gupta",
-    "id": "22mc@jssaten.ac.in",
+    "id": "anshika.1@gmail.com",
     "phone_no": "9838083876",
     "password": "22AAaa-00",
-    "TodoList": []
+    "TodoList": [
+      {
+        "sno": 5,
+        "title": "ans",
+        "desc": "asxads"
+      },
+      {
+        "sno": 5,
+        "title": "ans",
+        "desc": "asxads"
+      },
+      {
+        "sno": 5,
+        "title": "xdndvkj",
+        "desc": "aaaa"
+      }
+    ]
   },
   {
     "fname": "Anshika",
@@ -36,7 +51,3 @@
     "TodoList": []
   }
 ]
-=======
-  
-]
->>>>>>> bd40585d62c5f19c08b1d793ffab22470d7afb7a

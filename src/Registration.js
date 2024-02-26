@@ -5,7 +5,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 export default function Registration() {
     
-     
     const [fname,fnamechange]=useState("")
     const [lname,lnamechange]=useState("")
     const [id,idchange]=useState("")
@@ -19,7 +18,7 @@ export default function Registration() {
     // to check if the email is valid
     const validateEmail = (id) => {
       return String(id)
-        .toLowerCase()
+        .toLowerCase() 
         .match(
           /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         ); 
@@ -64,19 +63,16 @@ export default function Registration() {
                 },
                 body:JSON.stringify(info),
             })
- 
             console.log(response)
             if(response.ok){
                 console.log("Data saved successfully");
                 navigate('/Home',{state:{id}})
             }else{
-                console.log("some error occuredknkn")
+                console.log("some error occuredknkn") 
             }
         }catch(err){
             console.error("Some error occured ",err)
         }
-        
-
       }else{
         alert("Enter valid email Id and Password")
       } 

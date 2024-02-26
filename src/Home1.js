@@ -23,7 +23,7 @@ const Home1 = () => {
       },
       body:JSON.stringify({id})
     })
-    if(response.ok){
+    if(response.ok){ 
       infof= await response.json()  
       infof=infof.data.nameUser
       setusename(infof.fname+infof.lname)
@@ -42,7 +42,7 @@ const Home1 = () => {
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
-  };
+  }; 
 
   const hideMenu = () => {
     setShowMenu(false);
@@ -157,63 +157,116 @@ console.log(getTodo)
 //     console.log("something happen")
 //   }
 // }
+
+const handleAbout=()=>{
+  navigate('/about',{state:{id}})
+}
+const handleContact=()=>{
+  navigate('/contactUs',{state:{id}})
+}
+const handleHome=()=>{
+  navigate('/Home',{state:{id}})
+}
+const handleJobs=()=>{
+  navigate('/jobs',{state:{id}})
+}
+const handleATS=()=>{
+  navigate('/ats',{state:{id}})
+}
+// CHANGE THIS
+const handleReume=()=>{
+  navigate('/ats',{state:{id}})
+}
+const handleLogOut=()=>{
+navigate('/')
+}
+const handleNotes=()=>{
+  navigate('/notes',{state:{id}})
+}
 return (
 <div onLoad={get_username}>
-  <header className="header">
-    <nav>
-      <Link to="">
-        <img src={logo} alt="CareerBoost Logo" />
-      </Link>
-      <div className={`nav-links ${showMenu ? 'show' : ''}`}>
-        <i className="fa fa-times" onClick={hideMenu}></i>
-        <ul>
-          <li>
-            <Link to="/">HOME</Link>
-          </li>
-          <li>
-            <Link to="/about">ABOUT</Link>
-          </li>
-          <li>
-            <Link to="/contactUs">CONTACT</Link>
-          </li>
-        </ul>
-        </div>
-      <i className="fa fa-bars" onClick={toggleMenu}></i>
-    </nav>
 
-    <div className="text-box">
-      <h3>Hi...{username}</h3>
-      <h1 className="heading">Placement Insights</h1>
-      <p>
-        Revolutionize the job search experience by optimizing resumes for ATS, offering placement insights, and fostering a supportive community, ultimately empowering individuals in their pursuit of professional success.
-      </p>
-      <Link to="/" className="hero-btn">
-        Visit Us To Know More
-      </Link>
-    </div>
-    </header>
+<header>
+        <nav>
+          <a
+            href="index.html"
+            style={{
+              color: "blue",
+              textDecoration: "none",
+              paddingTop: "8px",
+              fontSize: "2em",
+            }}
+          >
+            CareerBoost
+          </a>
+          <div className="nav-links" id="navLinks">
+            <ul>
+              <li onClick={handleHome}>
+                <a
+                  href=""
+                  style={{
+                    color: "black",
+                    fontWeight: "1250",
+                    fontSize: "large",
+                  }}
+                >
+                  HOME
+                </a>
+              </li>
+              <li onClick={handleAbout}>
+                <a
+                  href=""
+                  style={{
+                    color: "black",
+                    fontWeight: "1250",
+                    fontSize: "large",
+                  }}
+                >
+                  ABOUT
+                </a>
+              </li>
+              <li onClick={handleContact}>
+                <a
+                  href=""
+                  style={{
+                    color: "black",
+                    fontWeight: "1250",
+                    fontSize: "large",
+                  }}
+                >
+                  CONTACT
+                </a>
+              </li>
+              <li onClick={handleLogOut}>
+                <a
+                  href=""
+                  style={{
+                    color: "black",
+                    fontWeight: "1250",
+                    fontSize: "large",
+                  }}
+                >
+                  LOG OUT
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
 
   <section className="function">
     <div className="row">
-      <div className="fun-col">
-        <Link to="" className="notes">
-          NOTES
-        </Link>
+      <div className="fun-col notes" onClick={handleNotes}>
+        NOTES
       </div>
-      <div className="fun-col">
-        <Link to="" className="Resume">
-          RESUME MAKER
-        </Link>
+      <div className="fun-col Resume" onClick={handleReume}>
+        RESUME MAKER
       </div>
-      <div className="fun-col">
-        <Link to="/ats" className="ATS">
-          ATS CHECKER
-        </Link>
+      <div className="fun-col ATS" onClick={handleATS}>
+        ATS CHECKER
        </div>
-       <div className="fun-col">
-        <Link to="/jobs" className="ATS">
-          JOBS
-        </Link>
+       <div className="fun-col ATS" onClick={handleJobs}>
+        JOBS
        </div>
     </div>
   </section>
