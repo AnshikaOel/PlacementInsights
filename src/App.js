@@ -17,7 +17,9 @@ import Contact  from './Contact';
 import Notes from "./Notes/NotesHOme";
 import Header from "./Header";
 import  Footer  from "./Footer";
-import NotesOS from './Notes/Notes'
+import NotesOS from './Notes/NotesOS'
+import NotesOOP from './Notes/NotesOOP'
+import NotesDBMS from './Notes/DBMS'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -95,7 +97,8 @@ let initTodo;
           <Route path='' element={<Footer/>}></Route>
           <Route path='/notes' element={<Notes/>}></Route>
           <Route path='/osnotes' element={<NotesOS/>}></Route>
-          
+          <Route path='/oopsnotes' element={<NotesOOP/>}></Route>
+          <Route path='/dbmsnotes' element={<NotesDBMS/>}></Route>
           {/* <Route path='notes' element={</>}></Route> */}
         </Routes>
       </BrowserRouter>

@@ -4,7 +4,7 @@ import { Worker, Viewer } from '@react-pdf-viewer/core';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import './Notes.css'
 import axios from "axios";
-function Notes() {
+function DBMS() {
   let location =useLocation()
   let {state:{id}}=location
   const [note, setNote] = useState({
@@ -52,9 +52,8 @@ function Notes() {
    const pdfCall=(a)=>{
     if(a==1)
     {
-      console.log("yoooooooooooooooooooooooo")
       pdf1=!pdf1
-      console.log(pdf1)
+      // console.log(pdf1)
     }
     if(a===2){
       pdf2=!pdf2
@@ -145,21 +144,20 @@ function Notes() {
       </header>
       <div className="row">
       <div className="fun-col notes" onClick={()=>pdfCall(1)} >
-        Operating System Notes 
+        DBMS Notes 
       </div>
       <div className="fun-col Resume" onClick={()=>pdfCall(2)}>
-        Operating System Interview Questions
+        DBMS Interview Questions
       </div>
     </div>
 
     <div id="resume" className={pdf1 ? "":""}>
-      <embed src="./PDF/OS/OS.pdf" type="application/pdf" width="90%" height="700px" id="pdf1"/>
-    </div>
-
-    <div id="resume" className={pdf2 ?"hide":""}>
-      <embed src="./PDF/OS/OSInterview.pdf" type="application/pdf" width="90%" height="700px" id="pdf2"/>
+      <embed src="./PDF/DBMS/SQL.pdf" type="application/pdf" width="90%" height="700px" id="pdf1"/>
     </div>
     
+    <div id="resume" className={pdf2 ? "":""}>
+      <embed src="./PDF/DBMS/SQLInterview.pdf" type="application/pdf" width="90%" height="700px" id="pdf2"/>
+    </div>
       <form>
         <input
           name="title"
@@ -181,4 +179,4 @@ function Notes() {
   );
 }
 
-export default Notes;
+export default DBMS;

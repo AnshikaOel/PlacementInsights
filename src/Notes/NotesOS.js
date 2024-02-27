@@ -1,8 +1,36 @@
-import React , { useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Link ,useLocation, useNavigate} from 'react-router-dom'
-export const NotesHOme = () => {
-  const location =useLocation()
-  const {state:{id}}=location
+import { Worker, Viewer } from '@react-pdf-viewer/core';
+import '@react-pdf-viewer/core/lib/styles/index.css';
+import './Notes.css'
+import axios from "axios";
+function Notes() {
+  let location =useLocation()
+  let {state:{id}}=location
+  const [note, setNote] = useState({
+    title: "",
+    content: "",
+  });
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setNote((prevNode) => {
+      return {
+        ...prevNode,
+        [name]: value,
+      };
+    });
+  }
+
+  function submitNote(event) {
+    id.onAdd(note);
+    setNote({
+      title: "",
+      content: "",
+    });
+    event.preventDefault();
+  }
+
   console.log("this is id ahaha ",id)
     // for client side effects
     const [showMenu, setShowMenu] = useState(false);
@@ -14,6 +42,24 @@ export const NotesHOme = () => {
     const hideMenu = () => {
       setShowMenu(false);
     };
+  
+    // true-->hiding
+    // false-->showing
+
+    let pdf1=true
+    let pdf2=true
+  
+   const pdfCall=(a)=>{
+    if(a==1)
+    {
+      pdf1=!pdf1
+      // console.log(pdf1)
+    }
+    if(a===2){
+      pdf2=!pdf2
+    }
+   }
+
     const handleAbout=()=>{
       navigate('/about',{state:{id}})
     }
@@ -26,18 +72,10 @@ export const NotesHOme = () => {
     const handleLogOut=()=>{
       navigate('/')
     }
-    const handleOS=()=>{
-      navigate('/osnotes',{state:{id}})
-    }
-    const handleOOPS=()=>{
-      navigate('/oopsnotes',{state:{id}})
-    }
-    const handleDBMS=()=>{
-      navigate('/dbmsnotes',{state:{id}})
-    }
   return (
     <div>
-      <header>
+
+    <header>
         <nav>
           <a
             href="index.html"
@@ -104,35 +142,42 @@ export const NotesHOme = () => {
           </div>
         </nav>
       </header>
-      
-    <section className="function">
-    <div className="row">
-      <div className="fun-col notes" onClick={handleOS}>
-        Operating System
+      <div className="row">
+      <div className="fun-col notes" onClick={()=>pdfCall(1)} >
+        Operating System Notes 
       </div>
-      <div className="fun-col Resume" onClick={handleOOPS}>
-        OOPS
+      <div className="fun-col Resume" onClick={()=>pdfCall(2)}>
+        Operating System Interview Questions
       </div>
-      <div className="fun-col ATS" onClick={handleDBMS}>
-        DBMS
-       </div>
-       <div className="fun-col ATS" onClick={handleHome}>
-        React
-       </div>
-       <div className="fun-col ATS" onClick={handleHome}>
-        Express
-       </div>
-       <div className="fun-col ATS" onClick={handleHome}>
-        Coding
-       </div>
-       <div className="fun-col ATS" onClick={handleHome}>
-        Javascript
-       </div>
     </div>
-  </section>
 
+    <div id="resume" className={pdf1 ? "":""}>
+      <embed src="./PDF/OS/OS.pdf" type="application/pdf" width="90%" height="700px" id="pdf1"/>
+    </div>
 
+    <div id="resume" className={pdf2 ?"hide":""}>
+      <embed src="./PDF/OS/OSInterview.pdf" type="application/pdf" width="90%" height="700px" id="pdf2"/>
+    </div>
+    
+      <form>
+        <input
+          name="title"
+          onChange={handleChange}
+          value={note.title}
+          placeholder="Title"
+        />
+        <textarea
+          name="content"
+          onChange={handleChange}
+          value={note.content}
+          placeholder="Take a note..."
+          rows="3"
+        />
+        <button >Add</button>
+        {/* onClick={submitNote} */}
+      </form>
     </div>
   );
-};
-export default NotesHOme
+}
+
+export default Notes;

@@ -5,18 +5,7 @@
     "id": "22mca009@jssaten.ac.in",
     "phone_no": "9838083876",
     "password": "22AAaa-00",
-    "TodoList": [
-      {
-        "sno": 5,
-        "title": "ans",
-        "desc": "asxads"
-      },
-      {
-        "sno": 5,
-        "title": "ans",
-        "desc": "asxads"
-      }
-    ]
+    "TodoList": []
   },
   {
     "fname": "Anshika",
