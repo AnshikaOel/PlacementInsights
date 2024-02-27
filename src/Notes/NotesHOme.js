@@ -9,14 +9,14 @@ export const NotesHOme = () => {
     const navigate=useNavigate()
     const toggleMenu = () => {
       setShowMenu(!showMenu);
-    };
+    }; 
   
     const hideMenu = () => {
       setShowMenu(false);
     };
     const handleAbout=()=>{
       navigate('/about',{state:{id}})
-    }
+    } 
     const handleContact=()=>{
       navigate('/contactUs',{state:{id}})
     }
@@ -35,12 +35,21 @@ export const NotesHOme = () => {
     const handleDBMS=()=>{
       navigate('/dbmsnotes',{state:{id}})
     }
+    const handleJS=()=>{
+      navigate('/jsnotes',{state:{id}})
+    }
+    const handleCoding=()=>{
+      navigate('/coding_notes',{state:{id}})
+    }
+    const handleHR=()=>{
+      navigate('/hrRound_notes',{state:{id}})
+    }
   return (
     <div>
       <header>
         <nav>
           <a
-            href="index.html"
+            onClick={handleHome}
             style={{
               color: "blue",
               textDecoration: "none",
@@ -104,34 +113,35 @@ export const NotesHOme = () => {
           </div>
         </nav>
       </header>
-      
+      <h1>Hello...<b>[Username]</b></h1>
     <section className="function">
     <div className="row">
-      <div className="fun-col notes" onClick={handleOS}>
-        Operating System
+      <div className="sub_option" onClick={handleCoding}>
+      Coding
       </div>
-      <div className="fun-col Resume" onClick={handleOOPS}>
+      <div className="sub_option" onClick={handleOOPS}>
         OOPS
       </div>
-      <div className="fun-col ATS" onClick={handleDBMS}>
+      <div className="sub_option" onClick={handleDBMS}>
         DBMS
        </div>
-       <div className="fun-col ATS" onClick={handleHome}>
+       {/* <div className="fun-col ATS" onClick={handleHome}>
         React
-       </div>
-       <div className="fun-col ATS" onClick={handleHome}>
+       </div> */}
+       {/* <div className="fun-col ATS" onClick={handleHome}>
         Express
+       </div> */}
+       <div className="sub_option" onClick={handleJS}>
+       Javascript
        </div>
-       <div className="fun-col ATS" onClick={handleHome}>
-        Coding
+       <div className="sub_option" onClick={handleOS}>
+         Operating System
        </div>
-       <div className="fun-col ATS" onClick={handleHome}>
-        Javascript
+       <div className="sub_option" onClick={handleHR}>
+        HR Round
        </div>
     </div>
-  </section>
-
-
+  </section> 
     </div>
   );
 };

@@ -23,10 +23,12 @@ const Home1 = () => {
       },
       body:JSON.stringify({id})
     })
+    console.log(response)
     if(response.ok){ 
       infof= await response.json()  
       infof=infof.data.nameUser
       setusename(infof.fname+infof.lname)
+      console.log("this is present ",username)
     }else{
       console.log("Some error in response")
     }
@@ -174,8 +176,8 @@ const handleATS=()=>{
   navigate('/ats',{state:{id}})
 }
 // CHANGE THIS
-const handleReume=()=>{
-  navigate('/ats',{state:{id}})
+const handleResume=()=>{
+  navigate('/resume_generator',{state:{id}})
 }
 const handleLogOut=()=>{
 navigate('/')
@@ -189,7 +191,7 @@ return (
 <header>
         <nav>
           <a
-            href="index.html"
+          onClick={handleHome}
             style={{
               color: "blue",
               textDecoration: "none",
@@ -201,9 +203,8 @@ return (
           </a>
           <div className="nav-links" id="navLinks">
             <ul>
-              <li onClick={handleHome}>
+            <li onClick={handleHome}>
                 <a
-                  href=""
                   style={{
                     color: "black",
                     fontWeight: "1250",
@@ -215,7 +216,6 @@ return (
               </li>
               <li onClick={handleAbout}>
                 <a
-                  href=""
                   style={{
                     color: "black",
                     fontWeight: "1250",
@@ -227,7 +227,6 @@ return (
               </li>
               <li onClick={handleContact}>
                 <a
-                  href=""
                   style={{
                     color: "black",
                     fontWeight: "1250",
@@ -239,7 +238,6 @@ return (
               </li>
               <li onClick={handleLogOut}>
                 <a
-                  href=""
                   style={{
                     color: "black",
                     fontWeight: "1250",
@@ -253,19 +251,20 @@ return (
           </div>
         </nav>
       </header>
-
-  <section className="function">
+      {/* row  */}
+      <h1>Hello...<b>[Username]</b></h1>
+  <section>
     <div className="row">
-      <div className="fun-col notes" onClick={handleNotes}>
+      <div className="tab_option" onClick={handleNotes}>
         NOTES
       </div>
-      <div className="fun-col Resume" onClick={handleReume}>
+      <div className="tab_option" onClick={handleResume}>
         RESUME MAKER
       </div>
-      <div className="fun-col ATS" onClick={handleATS}>
+      <div className="tab_option" onClick={handleATS}>
         ATS CHECKER
        </div>
-       <div className="fun-col ATS" onClick={handleJobs}>
+       <div className="tab_option" onClick={handleJobs}>
         JOBS
        </div>
     </div>
@@ -275,7 +274,7 @@ return (
   <div className="container"> 
        {/* showing added to do list */}
     <div className="mb-3">
-      <h3 lassName="my-3">To Do list</h3>
+      <h3 className="my-3">To Do list</h3>
       {
         getTodo.length===0?"Hurry.! All work is Done":
         getTodo.map((todo)=>{

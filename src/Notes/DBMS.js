@@ -78,7 +78,7 @@ function DBMS() {
     <header>
         <nav>
           <a
-            href="index.html"
+            onClick={handleHome}
             style={{
               color: "blue",
               textDecoration: "none",
@@ -142,11 +142,12 @@ function DBMS() {
           </div>
         </nav>
       </header>
+      <h1>Hello...<b>[Username]</b></h1>
       <div className="row">
-      <div className="fun-col notes" onClick={()=>pdfCall(1)} >
+      <div className="sub_option" onClick={()=>pdfCall(1)} >
         DBMS Notes 
       </div>
-      <div className="fun-col Resume" onClick={()=>pdfCall(2)}>
+      <div className="sub_option" onClick={()=>pdfCall(2)}>
         DBMS Interview Questions
       </div>
     </div>
@@ -156,7 +157,7 @@ function DBMS() {
     </div>
     
     <div id="resume" className={pdf2 ? "":""}>
-      <embed src="./PDF/DBMS/SQLInterview.pdf" type="application/pdf" width="90%" height="700px" id="pdf2"/>
+      <embed src="./PDF/DBMS/SQLIntrerview.pdf" type="application/pdf" width="90%" height="700px" id="pdf2"/>
     </div>
       <form>
         <input

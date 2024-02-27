@@ -1,10 +1,36 @@
-import React , { useState,useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import { Link ,useLocation, useNavigate} from 'react-router-dom'
-import logo from './logo1.png'
-export default function Jobs() {
+import { Worker, Viewer } from '@react-pdf-viewer/core';
+import '@react-pdf-viewer/core/lib/styles/index.css';
+import './Notes.css'
+import axios from "axios";
+function DBMS() {
+  let location =useLocation()
+  let {state:{id}}=location
+  const [note, setNote] = useState({
+    title: "",
+    content: "",
+  });
 
-  const location =useLocation()
-  const {state:{id}}=location 
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setNote((prevNode) => {
+      return {
+        ...prevNode,
+        [name]: value,
+      };
+    });
+  }
+
+  function submitNote(event) {
+    id.onAdd(note);
+    setNote({
+      title: "",
+      content: "",
+    });
+    event.preventDefault();
+  }
+
   console.log("this is id ahaha ",id)
     // for client side effects
     const [showMenu, setShowMenu] = useState(false);
@@ -16,7 +42,23 @@ export default function Jobs() {
     const hideMenu = () => {
       setShowMenu(false);
     };
+  
+    // true-->hiding
+    // false-->showing
 
+    let pdf1=true
+    let pdf2=true
+  
+   const pdfCall=(a)=>{
+    if(a==1)
+    {
+      pdf1=!pdf1
+      // console.log(pdf1)
+    }
+    if(a===2){
+      pdf2=!pdf2
+    }
+   }
 
     const handleAbout=()=>{
       navigate('/about',{state:{id}})
@@ -29,34 +71,11 @@ export default function Jobs() {
     }
     const handleLogOut=()=>{
       navigate('/')
-      }
-  const [data, setData] = useState([]);
-    const jobs = async () => {
-        console.log("kjbvjxkbv bjxbvbjkbnvj");
-        try {
-          const response = await fetch('http://localhost:5000/internship/fetch/', {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-          });
-          if (response.ok) {
-              let dataSet = await response.json();
-              setData(dataSet)
-          } else {
-            console.log('Failed to fetch data');
-          }
-        } catch (error) {
-          console.log('Error fetching data:', error);
-        }
-      }; 
-      useEffect(() => {
-        jobs(); 
-      }, []);
-
+    }
   return (
-    <div onLoad={jobs}>
-      <header>
+    <div>
+
+    <header>
         <nav>
           <a
             onClick={handleHome}
@@ -124,37 +143,41 @@ export default function Jobs() {
         </nav>
       </header>
       <h1>Hello...<b>[Username]</b></h1>
-      <div className='navBar'> 
-         <table className= "table" border="1" frame="hsides" rules="row">
-          <thead>
-            <tr>
-              <th id="id">ID</th>
-              <th id="role">Role</th>
-              <th id="stipend">Stipend</th>
-              <th id="cn">Company Name</th>
-              <th id="time">Duration</th>
-            </tr>
-                 
-          </thead>
-         
-          <tbody id="apidata">
-            {data.map(item => (
-              <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.role}</td>
-                <td>{item.stipend}</td>
-                <td>{item.company.name}</td>
-                <td>{item.duration}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-         <br></br>
-         
+      <div className="row">
+      <div className="sub_option" onClick={()=>pdfCall(1)} >
+        Javascript Notes 
       </div>
+      <div className="sub_option" onClick={()=>pdfCall(2)}>
+      React Notes 
+      </div>
+    </div>
 
-     
-    </div> 
-  ) 
-} 
-  
+    <div id="resume" className={pdf1 ? "":""}>
+      <embed src="./PDF/JavaScript/JSConcepts.pdf" type="application/pdf" width="90%" height="700px" id="pdf1"/>
+    </div>
+    
+    <div id="resume" className={pdf2 ? "":""}>
+      <embed src="./PDF/React/ReactNotes.pdf" type="application/pdf" width="90%" height="700px" id="pdf2"/>
+    </div>
+      <form>
+        <input
+          name="title"
+          onChange={handleChange}
+          value={note.title}
+          placeholder="Title"
+        />
+        <textarea
+          name="content"
+          onChange={handleChange}
+          value={note.content}
+          placeholder="Take a note..."
+          rows="3"
+        />
+        <button >Add</button>
+        {/* onClick={submitNote} */}
+      </form>
+    </div>
+  );
+}
+
+export default DBMS;

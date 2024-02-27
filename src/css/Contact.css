@@ -15,20 +15,22 @@ body {
 }
 
 .ffbox {
-  padding-left: 330PX;
   display: flex;
-  /* width: 80%; */
-  max-width: 1000px;
+  /* margin: 5%; */
+  margin-left: 10%;
+  margin-right: 10%;
+  /* max-width: 1000px; */
   background-color: #fff;
   border: 3px solid #e4e4e9;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   border-radius: 10px;
-  flex-wrap: wrap;
-    padding-top: 30PX;
+  /* flex-wrap: wrap; */
+    /* padding-top: 30PX; */
 }
 
 .ffbox1 {
+
   padding-top: 50PX;
   flex: 1;
   padding: 23px;
@@ -89,7 +91,7 @@ button:hover {
 
 .cb {
   text-align: center;
-  color: rgb(74, 51, 190);
+  color:blue;
 }
 
 .map-div {

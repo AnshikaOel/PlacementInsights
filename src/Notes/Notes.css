@@ -11,11 +11,11 @@
     padding: 0 16px;
   }
   
-  header h1 {
+  header h1 { 
     color: #fff;
     font-family: "McLaren", cursive;
     font-weight: 200;
-  }
+  } 
   
   footer {
     position: absolute;
@@ -86,3 +86,16 @@
   size: 5%;
 }
   
+.sub_option{
+  background-color: #84eff1;
+  flex: 1 1 175px;
+  border-radius: 5%;
+  font-size: 30px;
+  text-decoration: none;
+  margin: 7%;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  height: 150px;
+  overflow: hidden;
+  text-align: center;
+  padding: 2.5%;
+}

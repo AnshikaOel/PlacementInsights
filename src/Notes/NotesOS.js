@@ -17,7 +17,7 @@ function Notes() {
     setNote((prevNode) => {
       return {
         ...prevNode,
-        [name]: value,
+        [name]: value, 
       };
     });
   }
@@ -36,7 +36,7 @@ function Notes() {
     const [showMenu, setShowMenu] = useState(false);
     const navigate=useNavigate()
     const toggleMenu = () => {
-      setShowMenu(!showMenu);
+      setShowMenu(showMenu);
     };
   
     const hideMenu = () => {
@@ -78,7 +78,7 @@ function Notes() {
     <header>
         <nav>
           <a
-            href="index.html"
+            onClick={handleHome}
             style={{
               color: "blue",
               textDecoration: "none",
@@ -142,11 +142,12 @@ function Notes() {
           </div>
         </nav>
       </header>
+      <h1>Hello...<b>[Username]</b></h1>
       <div className="row">
-      <div className="fun-col notes" onClick={()=>pdfCall(1)} >
+      <div className="sub_option" onClick={()=>pdfCall(1)} >
         Operating System Notes 
       </div>
-      <div className="fun-col Resume" onClick={()=>pdfCall(2)}>
+      <div className="sub_option" onClick={()=>pdfCall(2)}>
         Operating System Interview Questions
       </div>
     </div>
@@ -155,7 +156,7 @@ function Notes() {
       <embed src="./PDF/OS/OS.pdf" type="application/pdf" width="90%" height="700px" id="pdf1"/>
     </div>
 
-    <div id="resume" className={pdf2 ?"hide":""}>
+    <div id="resume" className={pdf2 ?"":""}>
       <embed src="./PDF/OS/OSInterview.pdf" type="application/pdf" width="90%" height="700px" id="pdf2"/>
     </div>
     

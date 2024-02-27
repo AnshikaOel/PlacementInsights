@@ -192,7 +192,7 @@
   .question{
       font-size:21px ;
       font-weight: bold;
-      padding-left: 12px;
+      padding-left: 5%;
   }
   
   .links{
@@ -200,9 +200,6 @@
   }
   
   .para{
-          line-height: var(--cssTypographyLineHeight, 1.78);
-      margin-top: var(--cssTypographyBasicMargin, 1em);
-      margin-bottom: 0;
       padding-left: 12px;
   }
   
@@ -215,10 +212,10 @@
       align-items: center;
       padding-right: 1em;
       margin-bottom: 15px;
-      border-width: 1px;
+      border-width:1px;
       border-style: solid;
-      border-color: #ee4b2b25;
-          display: grid;
+      border-color: #82f4f8;
+      display: grid;
       grid-template-columns: max-content 1fr max-content;
       column-gap: 0.75em;
       align-items: center;
@@ -249,11 +246,8 @@
       box-sizing: inherit;
   }
   
-  
-  .unordered-list{
-      padding-left: 55px;
-  }
-  
+
+
   footer {
   
     text-align: center;
@@ -265,4 +259,13 @@
   
   footer p {
     color: #ccc;
+  }
+
+  .ats_div{
+    padding: 2%;
+    margin: 5%;
+  }
+
+  #about_ats{
+    border: 3px solid #82f4f8;
   }

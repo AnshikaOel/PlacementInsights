@@ -24,7 +24,7 @@ const onDelete=async(title,id)=>{
     <div>
        <h3>{desc}</h3>
        <p>{title}</p>
-       <button className="btn bt-sn btn-danger" onClick={()=>{onDelete(title,id)}}>Delete</button>
+       <button className="btn bt-sn btn-primary" onClick={()=>{onDelete(title,id)}}>Delete</button>
     </div>
     </>
   )

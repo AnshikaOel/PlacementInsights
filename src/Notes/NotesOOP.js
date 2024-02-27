@@ -78,7 +78,7 @@ function NotesOOP() {
     <header>
         <nav>
           <a
-            href="index.html"
+            onClick={handleHome}
             style={{
               color: "blue",
               textDecoration: "none",
@@ -142,12 +142,10 @@ function NotesOOP() {
           </div>
         </nav>
       </header>
+      <h1>Hello...<b>[Username]</b></h1>
       <div className="row">
-      <div className="fun-col notes" onClick={()=>pdfCall(1)} >
+      <div className="sub_option" onClick={()=>pdfCall(1)} >
         OOPS Notes 
-      </div>
-      <div className="fun-col Resume" onClick={()=>pdfCall(2)}>
-        OOPS Interview Questions
       </div>
     </div>
 

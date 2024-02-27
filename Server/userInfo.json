@@ -2,49 +2,11 @@
   {
     "fname": "Anshika",
     "lname": "Gupta",
-    "id": "22mca009@jssaten.ac.in",
-    "phone_no": "9838083876",
-    "password": "22AAaa-00",
-    "TodoList": []
-  },
-  {
-    "fname": "Anshika",
-    "lname": "Gupta",
     "id": "anshika.1@gmail.com",
     "phone_no": "9838083876",
     "password": "22AAaa-00",
     "TodoList": [
-      {
-        "sno": 5,
-        "title": "ans",
-        "desc": "asxads"
-      },
-      {
-        "sno": 5,
-        "title": "ans",
-        "desc": "asxads"
-      },
-      {
-        "sno": 5,
-        "title": "xdndvkj",
-        "desc": "aaaa"
-      }
+      
     ]
-  },
-  {
-    "fname": "Anshika",
-    "lname": "Gupta",
-    "id": "anshika.1@gmail.com",
-    "phone_no": "9838083876",
-    "password": "22AAaa-00",
-    "TodoList": []
-  },
-  {
-    "fname": "Anshika",
-    "lname": "Gupta",
-    "id": "anshika.oel@gmail.com",
-    "phone_no": "9838083876",
-    "password": "22AAaa-00",
-    "TodoList": []
   }
 ]

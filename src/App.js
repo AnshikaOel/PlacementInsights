@@ -20,7 +20,15 @@ import  Footer  from "./Footer";
 import NotesOS from './Notes/NotesOS'
 import NotesOOP from './Notes/NotesOOP'
 import NotesDBMS from './Notes/DBMS'
+import NotesJS from './Notes/Javascript'
+import NotesCoding from './Notes/NotesCoding.js'
+import ResumeGenerator from './ResumeGenerator.js';
+import HRnotes from './Notes/HRnotes.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+
+
 
 function App() {
 
@@ -99,7 +107,11 @@ let initTodo;
           <Route path='/osnotes' element={<NotesOS/>}></Route>
           <Route path='/oopsnotes' element={<NotesOOP/>}></Route>
           <Route path='/dbmsnotes' element={<NotesDBMS/>}></Route>
-          {/* <Route path='notes' element={</>}></Route> */}
+          <Route path='/jsnotes' element={<NotesJS/>}></Route>
+          <Route path='/coding_notes' element={<NotesCoding/>}></Route>
+          <Route path='/resume_generator' element={<ResumeGenerator/>}></Route>
+          <Route path='/hrRound_notes' element={<HRnotes/>}></Route>
+
         </Routes>
       </BrowserRouter>
     </div>

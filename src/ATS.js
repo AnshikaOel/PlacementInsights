@@ -1,14 +1,33 @@
 
-import React from "react";
+import React , { useState} from "react"
+import { Link ,useLocation, useNavigate} from 'react-router-dom'
 import "./css/ATS.css";
 
 const ATS = () => {
+  const location =useLocation()
+  const {state:{id}}=location
+  console.log("this is id ahaha ",id)
+    // for client side effects
+    const [showMenu, setShowMenu] = useState(false);
+    const navigate=useNavigate()
+  const handleAbout=()=>{
+    navigate('/about',{state:{id}})
+  } 
+  const handleContact=()=>{
+    navigate('/contactUs',{state:{id}})
+  }
+  const handleHome=()=>{
+    navigate('/Home',{state:{id}})
+  }
+  const handleLogOut=()=>{
+    navigate('/')
+    }
   return (
     <>
       <header>
         <nav>
           <a
-            href="index.html"
+            onClick={handleHome}
             style={{
               color: "blue",
               textDecoration: "none",
@@ -21,8 +40,7 @@ const ATS = () => {
           <div className="nav-links" id="navLinks">
             <ul>
               <li>
-                <a
-                  href=""
+                <a onClick={handleHome}
                   style={{
                     color: "black",
                     fontWeight: "1250",
@@ -34,7 +52,7 @@ const ATS = () => {
               </li>
               <li>
                 <a
-                  href=""
+                  onClick={handleAbout}
                   style={{
                     color: "black",
                     fontWeight: "1250",
@@ -46,7 +64,7 @@ const ATS = () => {
               </li>
               <li>
                 <a
-                  href=""
+                  onClick={handleContact}
                   style={{
                     color: "black",
                     fontWeight: "1250",
@@ -58,14 +76,14 @@ const ATS = () => {
               </li>
               <li>
                 <a
-                  href=""
+                  onClick={handleLogOut}
                   style={{
                     color: "black",
                     fontWeight: "1250",
                     fontSize: "large",
                   }}
                 >
-                  USER
+                  LOG OUT
                 </a>
               </li>
             </ul>
@@ -74,10 +92,12 @@ const ATS = () => {
       </header>
 
       <main>
-        <p className="question">
+
+        <p className="ats_div about container">
           What is an ATS Resume Checker? | What is an ATS Resume Scanner?
         </p>
-        <p className="para">
+        <div className="ats_div about" id="about_ats">
+        <p className="para ">
           When you submit your resume to a job application, it usually goes
           through an ATS (Applicant Tracking System) that scans your resume for
           relevant keywords and information. An ATS resume checker is a software
@@ -94,7 +114,7 @@ const ATS = () => {
           Benefits of Checking Your Resume with Resume Scanner
         </p>
         <br />
-        <ul className="unordered-list">
+        <ul>
           <li>
             Automates tasks like resume parsing, saving time and effort in the
             hiring process.
@@ -157,10 +177,10 @@ const ATS = () => {
               </a>
             </p>
           </details>
-
+          
           {/* Add more details and links as needed */}
         </section>
-
+        </div>
 
       </main>
 

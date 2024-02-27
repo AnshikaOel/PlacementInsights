@@ -1,6 +1,8 @@
 import React , { useState} from "react";
 import { Link ,useLocation, useNavigate} from 'react-router-dom'
 import logo from './logo1.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope ,faPhone,faLocation} from '@fortawesome/free-solid-svg-icons'
 export const About = () => {
   const location =useLocation()
   const {state:{id}}=location
@@ -10,7 +12,7 @@ export const About = () => {
     const navigate=useNavigate()
     const toggleMenu = () => {
       setShowMenu(!showMenu);
-    };
+    }; 
   
     const hideMenu = () => {
       setShowMenu(false);
@@ -34,7 +36,7 @@ export const About = () => {
       <header>
         <nav>
           <a
-            href="index.html"
+            onClick={handleHome}
             style={{
               color: "blue",
               textDecoration: "none",
@@ -98,14 +100,39 @@ export const About = () => {
           </div>
         </nav>
       </header>
-      <p className="about">
+      <h1>Hello...<b>[Username]</b></h1>
+      <p className="about container">
         CarrerBoost revolutionize the job search experience by optimizing resumes for ATS,
         offering placement insights, and fostering a supportive community,
         ultimately empowering individuals in their pursuit of professional
         success.
         <br />
-        For any queries email at - <b>abc@gmail.com</b>
+        The purpose of  CareerBoost is designed to be a valuable asset for students entering the job market, offering a holistic approach to the job search process. By amalgamating features from various resume builders and collaborating with sites specializing in ATS checks, the project equips users with the tools and resources needed to confidently present their skills and secure opportunities in their chosen industries.
+        <br />
       </p>
+      <p className="about container">
+      Welcome to CareerBoost – Your Gateway to Professional Success!
+
+At CareerBoost, we understand the challenges that job seekers face in today's competitive market. That's why we've created a comprehensive platform designed to elevate your career prospects and guide you towards success. Founded by Samriddhi Maurya and Anshika Gupta, both pursuing their MCA in the 3rd semester at JSS Academy of Technical Education, Noida, CareerBoost is the result of our passion for empowering individuals in their professional journeys.
+         <div className="about container">
+        {/* <img src=""> */}
+        <p>Myself Sanskrati Mishra and I am pursuing my BCA from UIET,CSJMU,Kanpur,Uttar Pradesh.The aim of Making this website was to help people in medical emergency.And i hope this website was helpful to you </p>
+       </div>
+       <div className="about container">
+        {/* <img src=""> */}
+        <p>Myself Sanskrati Mishra and I am pursuing my BCA from UIET,CSJMU,Kanpur,Uttar Pradesh.The aim of Making this website was to help people in medical emergency.And i hope this website was helpful to you </p>
+       </div>      </p>
+      <div className="about">
+      <h1 class="subtitle">Contact Us</h1>
+          <p><FontAwesomeIcon icon={faEnvelope} /> CareerBoost@gmail.com</p>
+          <p><FontAwesomeIcon icon={faPhone} /> XXXXXXXXXX</p>
+          <p><FontAwesomeIcon icon={faLocation} /> Noida,Uttar Pradesh</p>
+          <div class="socialicon">
+            <a href="https://www.linkedin.com/in/anshika-gupta-7b9349216/"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/AnshikaOel"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.hackerrank.com/profile/anshika_oel"><i class="fa-brands fa-hackerrank"></i></a>
+          </div>
+          </div>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import React,{useState} from 'react';
 import { Styles } from './css/Contact.css';
 import { Link ,useLocation, useNavigate} from 'react-router-dom'
-import logo from './logo1.png'
 
 const Contact = () =>{
 
@@ -65,7 +64,7 @@ const Contact = () =>{
 <header>
         <nav>
           <a
-            href="index.html"
+            onClick={handleHome}
             style={{
               color: "blue",
               textDecoration: "none",
@@ -129,6 +128,7 @@ const Contact = () =>{
           </div>
         </nav>
       </header>
+      <h1>Hello...<b>[Username]</b></h1>
     <div className="ffbox">
       <div className="ffbox1">
         <h1 className="cb">CareerBoost</h1>
