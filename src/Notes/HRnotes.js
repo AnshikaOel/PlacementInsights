@@ -6,7 +6,9 @@ import './Notes.css'
 import axios from "axios";
 function HRnotes() {
   let location =useLocation()
-  let {state:{id}}=location
+  const {state:{id}}=location
+  const {state:{fname}}=location
+  const {state:{lname}}=location
   const [note, setNote] = useState({
     title: "",
     content: "",
@@ -61,13 +63,13 @@ function HRnotes() {
    }
 
     const handleAbout=()=>{
-      navigate('/about',{state:{id}})
+      navigate('/about',{state:{id,fname,lname}})
     }
     const handleContact=()=>{
-      navigate('/contactUs',{state:{id}})
+      navigate('/contactUs',{state:{id,fname,lname}})
     }
     const handleHome=()=>{
-      navigate('/Home',{state:{id}})
+      navigate('/Home',{state:{id,fname,lname}})
     }
     const handleLogOut=()=>{
       navigate('/')
@@ -142,7 +144,7 @@ function HRnotes() {
           </div>
         </nav>
       </header>
-      <h1>Hello...<b>[Username]</b></h1>
+      <h1>Hello...<b>{fname} {lname}</b></h1>
       <div className="row">
       <div className="sub_option" onClick={()=>pdfCall(1)} >
         HR Interview Questions 

@@ -9,7 +9,9 @@ export default function Login() {
   const navigate=useNavigate()
   const [id,idUpdate]=useState('')
   const [password,passwordUpdate]=useState('')
-  
+  const [fname,setfname]=useState("")
+  const [lname,setlname]=useState("")
+
   console.log("THis is login & apassword -- "+id+" & "+password)
   const ProceedLogin=async(e)=>{
     e.preventDefault()
@@ -28,7 +30,26 @@ export default function Login() {
         if(resp.ok){
           if(a.success){
             console.log("yeahh...we did")
-            navigate('/Home',{state:{id}})
+             //CHNAGE 
+             try{
+              const r=await fetch('http://localhost:5000/userName',{
+                method:'POST',
+                headers:{
+                  'Content-Type':'application/json',
+                },
+                body:JSON.stringify({id}) 
+              })
+                let b=await r.json()
+                const fname1=b.data.nameUser.fname
+                setfname(fname1) 
+                const lname1=b.data.nameUser.lname
+                setlname(lname1)
+                console.log("for usrname",fname1,"+",lname1)
+                console.log(fname,"=",lname)
+                navigate('/Home',{state:{id}})
+             }catch(err){
+              console.error(err)
+             } 
           }else{
             navigate('/login')
             toast.error('Login Failed due to Wrong Login Cresdentials')
@@ -37,6 +58,7 @@ export default function Login() {
           navigate('/login')
           toast.error('Login Failed due to Wrong Login =Cresdentials')
         }
+
       }catch(err){
         toast.error('Login Failed due to : '+err.message)
       }

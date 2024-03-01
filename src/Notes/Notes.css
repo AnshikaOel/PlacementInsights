@@ -99,3 +99,17 @@
   text-align: center;
   padding: 2.5%;
 }
+
+/* #outer{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 650px;
+  width: 90%;
+} */
+
+/* .inner{
+  width: 50%;
+  flex:0 0 50px;
+  margin: 15px;
+} */

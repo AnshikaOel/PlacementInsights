@@ -3,17 +3,21 @@ import { Link, useNavigate,useLocation, json } from 'react-router-dom'
 import logo from './logo1.png'
 import { toast } from 'react-toastify';
 import TodoItem from './ToDoItem'
-const Home1 = () => {
+const Home1 = (props) => {
 
   const location =useLocation()
+  
   const {state:{id}}=location
-  console.log("this is id for todo",id)
-  const [info,setinfo]=useState("")
-  const navigate=useNavigate()
+  const {state:{fname}}=location
+  const {state:{lname}}=location
 
-  // getting user name
+  const [info,setinfo]=useState("")
+  const navigate=useNavigate() 
+
+  // getting user namev
   const [username,setusename]=useState("")
   const get_username=async()=>{
+    console.log("Hinjfvjdbzfvjzxbcvjdbzjkv")
     try{
       let infof
       const response=await fetch("http://localhost:5000/userName",{
@@ -21,19 +25,21 @@ const Home1 = () => {
       headers:{
         'Content-Type':'application/json'
       },
-      body:JSON.stringify({id})
+      body:JSON.stringify({id}),
     })
+    
     console.log(response)
     if(response.ok){ 
       infof= await response.json()  
       infof=infof.data.nameUser
       setusename(infof.fname+infof.lname)
       console.log("this is present ",username)
+      setinfo(infof) 
     }else{
       console.log("Some error in response")
     }
-    console.log("this is info",infof) 
-    setinfo(infof)  
+    // console.log("this is info",infof) 
+    // setinfo(infof)  
     }catch(err){
        console.error("Some Error occured ",err)
     }
@@ -52,6 +58,7 @@ const Home1 = () => {
 
 // for to do list
   console.log(info)
+  const [sno,setsno]=useState("")
   const [title,setTitle]=useState("")
   const [desc,setDesc]=useState("")
   let initTodo;
@@ -72,14 +79,14 @@ const Home1 = () => {
   }else{
     //  storing data in 
     let sno
-    if(todo===null){
+    if(todo.length===0){
       console.log("ndcjksdnckjdncklzdncklzdnc")
       sno=1
     }else{
       console.log("THis is length")
       console.log(todo)
-      // sno=todo[todo.length-1].sno+1;
-      sno=5
+      sno=todo[todo.length-1].sno+1;
+      // sno=5
     }
     settodo(initTodo)
     const myTodo={
@@ -161,29 +168,29 @@ console.log(getTodo)
 // }
 
 const handleAbout=()=>{
-  navigate('/about',{state:{id}})
+  navigate('/about',{state:{id,fname,lname}})
 }
 const handleContact=()=>{
-  navigate('/contactUs',{state:{id}})
+  navigate('/contactUs',{state:{id,fname,lname}})
 }
 const handleHome=()=>{
-  navigate('/Home',{state:{id}})
+  navigate('/Home',{state:{id,fname,lname}})
 }
 const handleJobs=()=>{
-  navigate('/jobs',{state:{id}})
+  navigate('/jobs',{state:{id,fname,lname}})
 }
 const handleATS=()=>{
-  navigate('/ats',{state:{id}})
+  navigate('/ats',{state:{id,fname,lname}})
 }
 // CHANGE THIS
 const handleResume=()=>{
-  navigate('/resume_generator',{state:{id}})
+  navigate('/resume_generator',{state:{id,fname,lname}})
 }
 const handleLogOut=()=>{
 navigate('/')
 }
 const handleNotes=()=>{
-  navigate('/notes',{state:{id}})
+  navigate('/notes',{state:{id,fname,lname}})
 }
 return (
 <div onLoad={get_username}>
@@ -252,7 +259,9 @@ return (
         </nav>
       </header>
       {/* row  */}
-      <h1>Hello...<b>[Username]</b></h1>
+      {/* :id,fname:lname
+        */}
+      <h1>Hello...<b>{fname} {lname}</b></h1>
   <section>
     <div className="row">
       <div className="tab_option" onClick={handleNotes}>
@@ -267,7 +276,7 @@ return (
        <div className="tab_option" onClick={handleJobs}>
         JOBS
        </div>
-    </div>
+    </div> 
   </section>
 
  {/* to do list  */}
@@ -280,8 +289,8 @@ return (
         getTodo.map((todo)=>{
         return( 
               <> 
-                 {/* these blank Brackets are used return more than one thing  */}
-              <TodoItem desc={todo.desc} title={todo.title} id={id}/> 
+                 {/* these blank Brackets are used return more than one thing */}
+              <TodoItem desc={todo.desc} title={todo.title} id={id} sno={todo.sno}fname={fname} lname={lname}/> 
               <hr/>
               <br/> 
               </> 

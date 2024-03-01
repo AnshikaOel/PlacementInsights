@@ -3,6 +3,8 @@ import { Link ,useLocation, useNavigate} from 'react-router-dom'
 export const NotesHOme = () => {
   const location =useLocation()
   const {state:{id}}=location
+  const {state:{fname}}=location
+  const {state:{lname}}=location
   console.log("this is id ahaha ",id)
     // for client side effects
     const [showMenu, setShowMenu] = useState(false);
@@ -15,34 +17,34 @@ export const NotesHOme = () => {
       setShowMenu(false);
     };
     const handleAbout=()=>{
-      navigate('/about',{state:{id}})
+      navigate('/about',{state:{id,fname,lname}})
     } 
     const handleContact=()=>{
-      navigate('/contactUs',{state:{id}})
+      navigate('/contactUs',{state:{id,fname,lname}})
     }
     const handleHome=()=>{
-      navigate('/Home',{state:{id}})
+      navigate('/Home',{state:{id,fname,lname}})
     }
     const handleLogOut=()=>{
       navigate('/')
     }
     const handleOS=()=>{
-      navigate('/osnotes',{state:{id}})
+      navigate('/osnotes',{state:{id,fname,lname}})
     }
     const handleOOPS=()=>{
-      navigate('/oopsnotes',{state:{id}})
+      navigate('/oopsnotes',{state:{id,fname,lname}})
     }
     const handleDBMS=()=>{
-      navigate('/dbmsnotes',{state:{id}})
+      navigate('/dbmsnotes',{state:{id,fname,lname}})
     }
     const handleJS=()=>{
-      navigate('/jsnotes',{state:{id}})
+      navigate('/jsnotes',{state:{id,fname,lname}})
     }
     const handleCoding=()=>{
-      navigate('/coding_notes',{state:{id}})
+      navigate('/coding_notes',{state:{id,fname,lname}})
     }
     const handleHR=()=>{
-      navigate('/hrRound_notes',{state:{id}})
+      navigate('/hrRound_notes',{state:{id,fname,lname}})
     }
   return (
     <div>
@@ -113,7 +115,7 @@ export const NotesHOme = () => {
           </div>
         </nav>
       </header>
-      <h1>Hello...<b>[Username]</b></h1>
+      <h1>Hello...<b>{fname} {lname}</b></h1>
     <section className="function">
     <div className="row">
       <div className="sub_option" onClick={handleCoding}>

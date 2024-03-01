@@ -66,11 +66,11 @@ export default function Registration() {
             console.log(response)
             if(response.ok){
                 console.log("Data saved successfully");
-                navigate('/Home',{state:{id}})
+                navigate('/Home',{state:{id,fname,lname}})
             }else{
                 console.log("some error occuredknkn") 
             }
-        }catch(err){
+        }catch(err){ 
             console.error("Some error occured ",err)
         }
       }else{

@@ -6,7 +6,9 @@ import './Notes.css'
 import axios from "axios";
 function DBMS() {
   let location =useLocation()
-  let {state:{id}}=location
+  const {state:{id}}=location
+  const {state:{fname}}=location
+  const {state:{lname}}=location
   const [note, setNote] = useState({
     title: "",
     content: "",
@@ -61,13 +63,13 @@ function DBMS() {
    }
 
     const handleAbout=()=>{
-      navigate('/about',{state:{id}})
+      navigate('/about',{state:{id,fname,lname}})
     }
     const handleContact=()=>{
-      navigate('/contactUs',{state:{id}})
+      navigate('/contactUs',{state:{id,fname,lname}})
     }
     const handleHome=()=>{
-      navigate('/Home',{state:{id}})
+      navigate('/Home',{state:{id,fname,lname}})
     }
     const handleLogOut=()=>{
       navigate('/')
@@ -142,7 +144,7 @@ function DBMS() {
           </div>
         </nav>
       </header>
-      <h1>Hello...<b>[Username]</b></h1>
+      <h1>Hello...<b>{fname} {lname}</b></h1>
       <div className="row">
       <div className="sub_option" onClick={()=>pdfCall(1)} >
         Javascript Notes 
@@ -151,12 +153,36 @@ function DBMS() {
       React Notes 
       </div>
     </div>
-
-    <div id="resume" className={pdf1 ? "":""}>
+    <div id="outer" style={{display:'flex'}}>
+    <div id="resume" style={{flex:3,margin:'10px'}}>
       <embed src="./PDF/JavaScript/JSConcepts.pdf" type="application/pdf" width="90%" height="700px" id="pdf1"/>
     </div>
-    
-    <div id="resume" className={pdf2 ? "":""}>
+
+    <form>
+        <input
+          name="title"
+          onChange={handleChange}
+          value={note.title}
+          placeholder="Title"
+        />
+        <textarea
+          name="content"
+          onChange={handleChange}
+          value={note.content}
+          placeholder="Take a note..."
+          rows="3"
+        />
+        <button >Add</button>
+        {/* onClick={submitNote} */}
+      </form>
+  </div>
+
+  <br></br>
+  <br></br>
+  <br></br>
+  
+  <div id="outer" style={{display:'flex'}}>
+    <div id="resume" style={{flex:3,margin:'10px'}}>
       <embed src="./PDF/React/ReactNotes.pdf" type="application/pdf" width="90%" height="700px" id="pdf2"/>
     </div>
       <form>
@@ -176,6 +202,7 @@ function DBMS() {
         <button >Add</button>
         {/* onClick={submitNote} */}
       </form>
+</div>
     </div>
   );
 }

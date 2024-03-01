@@ -4,7 +4,9 @@ import logo from './logo1.png'
 export default function Jobs() {
 
   const location =useLocation()
-  const {state:{id}}=location 
+  const {state:{id}}=location
+  const {state:{fname}}=location
+  const {state:{lname}}=location
   console.log("this is id ahaha ",id)
     // for client side effects
     const [showMenu, setShowMenu] = useState(false);
@@ -19,13 +21,13 @@ export default function Jobs() {
 
 
     const handleAbout=()=>{
-      navigate('/about',{state:{id}})
+      navigate('/about',{state:{id,fname,lname}})
     }
     const handleContact=()=>{
-      navigate('/contactUs',{state:{id}})
+      navigate('/contactUs',{state:{id,fname,lname}})
     }
     const handleHome=()=>{
-      navigate('/Home',{state:{id}})
+      navigate('/Home',{state:{id,fname,lname}})
     }
     const handleLogOut=()=>{
       navigate('/')
@@ -123,7 +125,7 @@ export default function Jobs() {
           </div>
         </nav>
       </header>
-      <h1>Hello...<b>[Username]</b></h1>
+      <h1>Hello...<b>{fname} {lname}</b></h1>
       <div className='navBar'> 
          <table className= "table" border="1" frame="hsides" rules="row">
           <thead>

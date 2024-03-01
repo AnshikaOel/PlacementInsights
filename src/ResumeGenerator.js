@@ -4,16 +4,19 @@ import { Link ,useLocation, useNavigate} from 'react-router-dom'
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 const ResumeGenerator = () => {
+
+    const location =useLocation()
     const navigate=useNavigate()
-    const id=5
+
+    const {state:{id}}=location
+    const {state:{fname}}=location
+    const {state:{lname}}=location
     const [cvFormVisible, setCvFormVisible] = useState(true);
     const [formData, setFormData] = useState({
         name: "",
         contact: "",
         email: "",
         address: "",
-        fb: "",
-        insta: "",
         linked: "",
         git: "",
         objective: "",
@@ -31,13 +34,80 @@ const ResumeGenerator = () => {
         }));
     };
 
+
+    function addNewWEField() {
+      let newNode = document.createElement("textarea");
+      newNode.classList.add("form-control");
+      newNode.classList.add("weField");
+      newNode.classList.add("mt-2");
+      newNode.setAttribute("rows", 2);
+      newNode.setAttribute("placeholder", "Enter here");
+    
+      let weOb = document.getElementById("we");
+      let weAddButtonOb = document.getElementById("weAddButton");
+    
+      // weOb.insertBefore(newNode, weAddButtonOb);
+    }
+    function addNewSField() {
+      let newNode = document.createElement("textarea");
+      newNode.classList.add("form-control");
+      newNode.classList.add("SField");
+      newNode.classList.add("mt-2");
+      newNode.setAttribute("rows", 2);
+      newNode.setAttribute("placeholder", "Enter here");
+    
+      let SOb = document.getElementById("S");
+      let SAddButtonOb = document.getElementById("SAddButton");
+    
+      // SOb.insertBefore(newNode, SAddButtonOb);
+    }
+    function addNewIField() {
+      let newNode = document.createElement("textarea");
+      newNode.classList.add("form-control");
+      newNode.classList.add("IField");
+      newNode.classList.add("mt-2");
+      newNode.setAttribute("rows", 2);
+      newNode.setAttribute("placeholder", "Enter here");
+    
+      let IOb = document.getElementById("I");
+      let IAddButtonOb = document.getElementById("IAddButton");
+    
+      // IOb.insertBefore(newNode, IAddButtonOb);
+    }
     const addNewField = (field) => {
         setFormData((prevData) => ({
             ...prevData,
             [field]: [...prevData[field], ""],
         }));
     };
-
+    function addNewAQField() {
+      let newNode = document.createElement("textarea");
+      newNode.classList.add("form-control");
+      newNode.classList.add("eqField");
+      newNode.classList.add("mt-2");
+      newNode.setAttribute("rows", 2);
+      newNode.setAttribute("placeholder", "Enter here");
+    
+      let aqOb = document.getElementById("aq");
+      let aqAddButtonOb = document.getElementById("aqAddButton");
+    
+      // aqOb.insertBefore(newNode, aqAddButtonOb);
+    }
+    
+    function addNewProjectField() {
+      let newNode = document.createElement("textarea");
+      newNode.classList.add("form-control");
+      newNode.classList.add("projectField");
+      newNode.classList.add("mt-2");
+      newNode.setAttribute("rows", 2);
+      newNode.setAttribute("placeholder", "Enter here");
+    
+      let projectOb = document.getElementById("project");
+      let projectAddButtonOb = document.getElementById("projectAddButton");
+    
+      // projectOb.insertBefore(newNode, projectAddButtonOb);
+    }
+    
     const updateField = (field, index, value) => {
         setFormData((prevData) => {
             const newData = { ...prevData };
@@ -62,13 +132,13 @@ const ResumeGenerator = () => {
         window.print();
     };
     const handleAbout=()=>{
-        navigate('/about',{state:{id}})
+        navigate('/about',{state:{id,fname,lname}})
       } 
       const handleContact=()=>{
-        navigate('/contactUs',{state:{id}})
+        navigate('/contactUs',{state:{id,fname,lname}})
       }
       const handleHome=()=>{
-        navigate('/Home',{state:{id}})
+        navigate('/Home',{state:{id,fname,lname}})
       }
       const handleLogOut=()=>{
         navigate('/')
@@ -142,7 +212,7 @@ const ResumeGenerator = () => {
           </div>
         </nav>
       </header>
-            <h1>Hello...<b>[Username]</b></h1>
+      <h1>Hello...<b>{fname} {lname}</b></h1>
             {cvFormVisible ? (
                 <div className="container" id="cv-form">
                     <h1 className="text-center my-2">Resume Generator</h1>
@@ -154,49 +224,40 @@ const ResumeGenerator = () => {
                             <div id="form_Center">
                             <div className="form-group">
                                 <label for="nameField"> Name</label>
-                                <input type="text" id="nameField" placeholder="Enter your Name" className="form-control" />
+                                <input type="text" id="nameField" value={formData.name} onChange={(e)=>setFormData({...formData,name:e.target.value})}  className="form-control" />
                             </div>
-
 
                             <div className="form-group mt-2">
                                 <label for="contactField">Phone Number</label>
-                                <input type="number" id="contactField" placeholder="Enter here" className="form-control" />
+                                <input type="number" id="contactField"  value={formData.contact} onChange={(e)=>setFormData({...formData,contact:e.target.value})}className="form-control" />
                             </div>
 
                             <div className="form-group mt-2">
                                 <label for="email">Email</label>
-                                <input type="text" id="emailField" placeholder="Enter here" className="form-control" />
+                                <input type="text" id="emailField" value={formData.email} onChange={(e)=>setFormData({...formData,email:e.target.value})} className="form-control" />
                             </div>
 
                             <div className="form-group mt-2">
                                 <label for="addressField">Enter your Address</label>
-                                <textarea id="addressField" placeholder="Enter here" className="form-control" rows="3"></textarea>
+                                <textarea id="addressField" value={formData.address} onChange={(e)=>setFormData({...formData,address:e.target.value})} className="form-control" rows="3"></textarea>
                             </div>
 
                             <p className="text-secondary my-3">Important Links</p>
                             <div className="form-group mt-2">
-                                <label for="fbField"> Facebook</label>
-                                <input type="text" id="fbField" placeholder="Enter here" className="form-control" />
-                            </div>
-                            <div className="form-group mt-2">
-                                <label for="instaField">Instagram</label>
-                                <input type="text" id="instaField" placeholder="Enter here" className="form-control" />
-                            </div>
-                            <div className="form-group mt-2">
                                 <label for="linkedField"> LinkedIn</label>
-                                <input type="text" id="linkedField" placeholder="Enter here" className="form-control" />
+                                <input type="text" id="linkedField" value={formData.linked} onChange={(e)=>setFormData({...formData,linked:e.target.value})} className="form-control" />
                             </div>
                             <div className="form-group mt-2">
                                 <label for="gitField">Github</label>
-                                <input type="text" id="gitField" placeholder="Enter here" className="form-control" />
+                                <input type="text" id="gitField" value={formData.git} onChange={(e)=>setFormData({...formData,git:e.target.value})} className="form-control" />
                             </div>
 
                             {/* <!-- Skills --> */}
                             <div className="form-group mt-2" id="S">
                                 <label for="">Skills</label>
-                                <textarea placeholder="Enter here" className="form-control SField"></textarea>
+                                <textarea value={formData.skills} onChange={(e)=>setFormData({...formData,skills:e.target.value})} className="form-control SField"></textarea>
                                 <div className="container text-center mt-2" id="SAddButton">
-                                    <button onclick="addNewSField()" className="btn btn-primary btn-sm">
+                                    <button onclick={addNewSField()} className="btn btn-primary btn-sm">
                                         +
                                     </button>
                                 </div>
@@ -206,15 +267,15 @@ const ResumeGenerator = () => {
                             {/* ... Professional Information Form ... */}
                             <div className="form-group mt-2">
                                 <label for="">Objective</label>
-                                <textarea id="objectiveField" placeholder="Enter here" className="form-control"></textarea>
+                                <textarea id="objectiveField" value={formData.objective} onChange={(e)=>setFormData({...formData,objective:e.target.value})} className="form-control"></textarea>
                             </div>
 
 
-                            <div className="form-group mt-2" id="aq">
+                            <div className="form-group mt-2"  id="aq">
                                 <label for="">Academic Qualification</label>
-                                <textarea placeholder="Enter here" className="form-control eqField"></textarea>
+                                <textarea value={formData.academicQualifications} onChange={(e)=>setFormData({...formData,academicQualifications:e.target.value})} className="form-control eqField"></textarea>
                                 <div className="container text-center mt-2" id="aqAddButton">
-                                    <button onclick="addNewAQField()" className="btn btn-primary btn-sm">
+                                    <button onclick={addNewAQField()} className="btn btn-primary btn-sm">
                                         +
                                     </button>
                                 </div>
@@ -225,9 +286,9 @@ const ResumeGenerator = () => {
                             {/* <!-- Work Experience --> */}
                             <div className="form-group mt-2" id="we">
                                 <label for="">Work Experience</label>
-                                <textarea placeholder="Enter here" className="form-control weField" rows="2"></textarea>
+                                <textarea placeholder="Enter here" value={formData.workExperience} onChange={(e)=>setFormData({...formData,workExperience:e.target.value})} className="form-control weField"  rows="2"></textarea>
                                 <div className="container text-center mt-2" id="weAddButton">
-                                    <button onclick="addNewWEField()" className="btn btn-primary btn-sm">
+                                    <button onclick={addNewWEField()} className="btn btn-primary btn-sm">
                                         +
                                     </button>
                                 </div>
@@ -236,9 +297,9 @@ const ResumeGenerator = () => {
                             {/* <!-- Projects --> */}
                             <div className="form-group mt-3" id="project">
                                 <label for="">Projects</label>
-                                <textarea placeholder="Enter here" className="form-control projectField"></textarea>
-                                <div className="container text-center mt-2" id="projectAddButton">
-                                    <button onclick="addNewProjectField()" className="btn btn-primary btn-sm">
+                                <textarea placeholder="Enter here" value={formData.projects} onChange={(e)=>setFormData({...formData,projects:e.target.value})} className="form-control projectField"></textarea>
+                                <div className="container text-center mt-2"  id="projectAddButton">
+                                    <button onclick={addNewProjectField()} className="btn btn-primary btn-sm">
                                         +
                                     </button>
                                 </div>
@@ -248,15 +309,13 @@ const ResumeGenerator = () => {
                             {/* <!-- Interests --> */}
                             <div className="form-group mt-3" id="I">
                                 <label for="">Interests</label>
-                                <textarea placeholder="Enter here" className="form-control IField" rows="2"></textarea>
-                                <div className="container text-center mt-2" id="IAddButton">
-                                    <button onclick="addNewIField()" className="btn btn-primary btn-sm">
+                                <textarea placeholder="Enter here" value={formData.interests} onChange={(e)=>setFormData({...formData,interests:e.target.value})} className="form-control IField" rows="2"></textarea>
+                                <div className="container text-center mt-2"  id="IAddButton">
+                                    <button onclick={addNewIField()} className="btn btn-primary btn-sm">
                                         +
                                     </button>
                                 </div>
                             </div>
-                            
-                        
                     
                     <div className="container text-center mt-3">
                         <button onClick={generateCV} className="btn btn-primary btn-lg">
@@ -272,22 +331,15 @@ const ResumeGenerator = () => {
                     <div className="row">
                         <div className="col-md-4 text-center background">
                             {/* ... First column of template ... */}
-
-                            <img
-                                src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
-                                alt="" className="img-fluid myimg" />
-
                             <div className="container">
-                                <p id="nameT1">Samriddhi</p>
-                                <p id="contactT">+91658235452</p>
-                                <p id="emailT">abc@gmail.com</p>
-                                <p id="addressT">Noida sector 56</p>
+                                {/* <p id="nameT1">{formData.name}</p> */}
+                                <p id="contactT">{formData.contact}</p>
+                                <p id="emailT">{formData.email}</p>
+                                <p id="addressT">{formData.address}</p>
 
-                                <hr />
-                                <p><a id="fbT" href="#1">Fb link</a></p>
-                                <p><a id="instaT" href="#1">insta link</a></p>
-                                <p><a id="linkedT" href="#1">linkedIn link</a></p>
-                                <p><a id="gitT" href="#1">Github link</a></p>
+                                <hr/>
+                                <p><a id="linkedT" href="#1">{formData.linked}</a></p>
+                                <p><a id="git" href="#1">{formData.git}</a></p>
 
                                 <hr />
 
@@ -298,22 +350,31 @@ const ResumeGenerator = () => {
                                     </div>
                                     <div className="card-body">
                                         <ul id="ST">
-                                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </li>
-                                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </li>
-                                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </li>
+                                            <li>{formData.skills} </li>
+                                            {/* <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </li>
+                                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </li> */}
                                         </ul>
                                     </div>
                                 </div>
 
-
-
-
-
+                                 {/* <!-- interest --> */}
+           <div className="card mt-4">
+          <div className="card-header background">
+            <h3>Interests</h3>
+          </div>
+          <div className="card-body">
+            <ul id="IT">
+              <li>{formData.interests} </li>
+              <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </li>
+              <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </li>
+            </ul>
+          </div>
+        </div>
                             </div>
                         </div>
                         <div className="col-md-8 mt-50">
                                 {/* ... Second column of template ... */}
-                                 <h1 id="nameT2" className="text-center" style="font-weight: 980">Samriddhi</h1>
+                                 <h1 id="nameT2" className="text-center" style={{ fontWeight: 980 }}>{fname} {lname}</h1>
 
         {/* <!-- objective card --> */}
 
@@ -323,10 +384,7 @@ const ResumeGenerator = () => {
           </div>
           <div className="card-body">
             <p id="objectiveT">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius,
-              suscipit est expedita quos delectus, nisi perferendis sunt porro
-              reiciendis iste consequuntur incidunt laborum recusandae ad
-              voluptates facilis architecto maxime ipsum.
+             {formData.objective}
             </p>
           </div>
         </div>
@@ -339,7 +397,7 @@ const ResumeGenerator = () => {
           </div>
           <div className="card-body">
             <ul id="aqT">
-              <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </li>
+              <li>{formData.academicQualifications} </li>
               <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </li>
               <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </li>
             </ul>
@@ -354,7 +412,7 @@ const ResumeGenerator = () => {
           </div>
           <div className="card-body">
             <ul id="weT">
-              <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </li>
+              <li>{formData.workExperience} </li>
               <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </li>
               <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </li>
             </ul>
@@ -370,32 +428,16 @@ const ResumeGenerator = () => {
           </div>
           <div className="card-body">
             <ul id="projectT">
-              <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </li>
-              <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </li>
-              <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* <!-- interest --> */}
-           <div className="card mt-4">
-          <div className="card-header background">
-            <h3>Interests</h3>
-          </div>
-          <div className="card-body">
-            <ul id="IT">
-              <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </li>
+              <li>{formData.projects} </li>
               <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </li>
               <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </li>
             </ul>
           </div>
         </div>
 
-
-
-        <div class="container mt-3 text-center">
+        {/* <div class="container mt-3 text-center">
           <button onclick="printCV()" class="buttonED ">Print</button>
-        </div>
+        </div> */}
                         </div>
                     </div>
                     <div className="container mt-3 text-center">

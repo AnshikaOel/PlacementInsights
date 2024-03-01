@@ -16,7 +16,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:3000', 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     optionsSuccessStatus: 204,
@@ -32,7 +32,7 @@ app.post('/userInfo',async(req,res)=>{
         id, 
         phone_no,
         password,
-        TodoList
+        TodoList 
     }
     try{
         const filePath=path.join(__dirname,'userInfo.json')
@@ -65,7 +65,7 @@ app.post('/login',async(req,res)=>{
     }catch(err){
         console.error(err)
     }
-    console.log(fileData)
+    // console.log(fileData)
     const verificationstatus=fileData.find(u=>u.id==id && u.password==password)
     if(verificationstatus){
         res.json({success:true})
@@ -76,6 +76,7 @@ app.post('/login',async(req,res)=>{
 
 //    getting username 
 app.post('/userName',async(req,res)=>{
+    console.log("just Trying")
     const {id}=req.body
     let fileData=[]
     try{
@@ -91,6 +92,7 @@ app.post('/userName',async(req,res)=>{
     if(!nameUser){
         return res.json({success:false,message:"User not found",data:null})
     }
+    console.log("THis is for username")
    res.json({success:true,message:"user found",data:{nameUser}})
 })
 
@@ -147,9 +149,9 @@ app.post('/get_todo',async(req,res)=>{
 // deleting todo
 app.post('/delete_todo',async(req,res)=>{
     const id=req.body.id
-    const title=req.body.title
+    const sno=req.body.sno
     console.log("this is id",id)
-    console.log("thi todoloist",title)
+    console.log("thi todoloist",sno)
 
     try{
         let filePath=path.join(__dirname,'userInfo.json')
@@ -157,7 +159,7 @@ app.post('/delete_todo',async(req,res)=>{
         const jsonData=JSON.parse(content)
         const objectToUpdate=jsonData.findIndex(obj=>obj.id===id)
         if(objectToUpdate!==-1){
-            jsonData[objectToUpdate].TodoList=jsonData[objectToUpdate].TodoList.filter((todo)=>todo.title!==title)
+            jsonData[objectToUpdate].TodoList=jsonData[objectToUpdate].TodoList.filter((todo)=>todo.sno!==sno)
             await fs.writeFile(filePath,JSON.stringify(jsonData,null,2))
             console.log("data written succesfuly")
         }
@@ -232,12 +234,12 @@ app.get('/internship/applied', (req,res) => {
 });
 
 // trying for pdf retrival
-app.get('/getting_pdf',(req,res)=>{
-    console.log('file path found successfully')
-    const pdfPath=path.join(__dirname,'../src/Notes/PDF/Coding','SDE.pdf')
-    console.log(pdfPath)
-    res.sendFile(pdfPath)
-})
+// app.get('/getting_pdf',(req,res)=>{
+//     console.log('file path found successfully')
+//     const pdfPath=path.join(__dirname,'../src/Notes/PDF/Coding','SDE.pdf')
+//     console.log(pdfPath)
+//     res.sendFile(pdfPath)
+// })
 
 
 
