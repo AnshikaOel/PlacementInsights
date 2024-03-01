@@ -151,12 +151,12 @@ function NotesOOP() {
         OOPS Notes 
       </div>
     </div>
-
-    <div id="resume" className={pdf1 ? "":""}>
+    <div id="outer" style={{display:'flex'}}>
+    <div id="resume" style={{flex:3,margin:'10px'}}>
       <embed src="./PDF/OOPS/OOPSInterview.pdf" type="application/pdf" width="90%" height="700px" id="pdf1"/>
     </div>
     
-      <form>
+      <form className="inner" style={{flex:1,padding:'20px'}}>
         <input
           name="title"
           onChange={handleChange}
@@ -173,6 +173,7 @@ function NotesOOP() {
         <button >Add</button>
         {/* onClick={submitNote} */}
       </form>
+    </div>
     </div>
   );
 }

@@ -151,7 +151,8 @@ function HRnotes() {
       </div>
     </div>
 
-    <div id="resume" className={pdf1 ? "":""}>
+    <div id="outer" style={{display:'flex'}}>
+    <div id="resume" style={{flex:3,margin:'10px'}}>
       <embed src="./PDF/HR/HRRound.pdf" type="application/pdf" width="90%" height="700px" id="pdf1"/>
     </div>
 
@@ -172,6 +173,7 @@ function HRnotes() {
         <button >Add</button>
         {/* onClick={submitNote} */}
       </form>
+    </div>
     </div>
   );
 }
