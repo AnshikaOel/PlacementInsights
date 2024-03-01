@@ -184,7 +184,7 @@ const handleATS=()=>{
 }
 // CHANGE THIS
 const handleResume=()=>{
-  navigate('/resume_generator',{state:{id,fname,lname}})
+  navigate('/resume',{state:{id,fname,lname}})
 }
 const handleLogOut=()=>{
 navigate('/')

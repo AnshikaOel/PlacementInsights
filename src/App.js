@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.png';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -12,7 +12,7 @@ import AddToDo from "./AddToDo"
 import Todos from "./ToDos"; 
 import TodoItem from './ToDoItem';
 import ATS from './ATS'
-import About from './About'
+import About from './About' 
 import Contact  from './Contact';
 import Notes from "./Notes/NotesHOme";
 import Header from "./Header";
@@ -24,6 +24,7 @@ import NotesJS from './Notes/Javascript'
 import NotesCoding from './Notes/NotesCoding.js'
 import ResumeGenerator from './ResumeGenerator.js';
 import HRnotes from './Notes/HRnotes.js';
+import Resume from './Resume.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -111,7 +112,7 @@ let initTodo;
           <Route path='/coding_notes' element={<NotesCoding/>}></Route>
           <Route path='/resume_generator' element={<ResumeGenerator/>}></Route>
           <Route path='/hrRound_notes' element={<HRnotes/>}></Route>
-
+          <Route path='/resume' element={<Resume/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
